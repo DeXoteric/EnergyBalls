@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4797968317348908}
   - component: {fileID: 58946213166778594}
   - component: {fileID: 50281884007946348}
-  - component: {fileID: 114890833487916782}
+  - component: {fileID: 114611766283412682}
   m_Layer: 0
   m_Name: Red Ball
   m_TagString: Untagged
@@ -294,7 +294,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &114890833487916782
+--- !u!114 &114611766283412682
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -302,11 +302,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1742400040985200}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91335332bd5fac943bb52a53d4902cf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 5e8b791d4e1d52f4f99752ed0b1f2fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startDrag: 0.4
   stopDrag: 1
+  scorePerHit: 1
 --- !u!198 &198014265392255132
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4367630439576666}
   - component: {fileID: 58893938849562330}
   - component: {fileID: 50048589289049144}
-  - component: {fileID: 114439184458009502}
+  - component: {fileID: 114343635288089622}
   m_Layer: 0
   m_Name: Yellow Ball
   m_TagString: Untagged
@@ -294,7 +294,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &114439184458009502
+--- !u!114 &114343635288089622
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -302,11 +302,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1998908980489426}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91335332bd5fac943bb52a53d4902cf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 19840655cdf837a40b4dad9392f2f8ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startDrag: 0.4
   stopDrag: 1
+  scorePerHit: 1
 --- !u!198 &198062665350963172
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -5,6 +5,7 @@ public class WhiteBallController : MonoBehaviour
     [Range(10f, 100f)] [SerializeField] private float forceMultiplier = 100f;
     [SerializeField] float startDrag = 0.4f;
     [SerializeField] float stopDrag = 1f;
+    [SerializeField] private int scorePerHit = 1;
 
     private const float STOP_SPEED = 0.1f;
 
@@ -45,5 +46,10 @@ public class WhiteBallController : MonoBehaviour
         direction.Normalize();
 
         energyBall.AddForce(direction * forceMultiplier, ForceMode2D.Impulse);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        ScoreTotal.AddScore(scorePerHit);
     }
 }

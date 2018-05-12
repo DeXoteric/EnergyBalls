@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 4288118794744576}
   - component: {fileID: 58142822106098440}
   - component: {fileID: 50081455261832638}
-  - component: {fileID: 114156294125585746}
+  - component: {fileID: 114534497418437572}
   m_Layer: 0
   m_Name: Purple Ball
   m_TagString: Untagged
@@ -294,7 +294,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &114156294125585746
+--- !u!114 &114534497418437572
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -302,11 +302,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1726065180395876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91335332bd5fac943bb52a53d4902cf0, type: 3}
+  m_Script: {fileID: 11500000, guid: eef1ec5a54ea7ed47ad518dc28f310bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startDrag: 0.4
   stopDrag: 1
+  scorePerHit: 1
 --- !u!198 &198331475291420724
 ParticleSystem:
   m_ObjectHideFlags: 1

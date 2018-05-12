@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4724264844524802}
   - component: {fileID: 58540566571270242}
   - component: {fileID: 50643850953185286}
-  - component: {fileID: 114858018005479044}
+  - component: {fileID: 114076426132013860}
   m_Layer: 0
   m_Name: Green Ball
   m_TagString: Untagged
@@ -294,7 +294,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &114858018005479044
+--- !u!114 &114076426132013860
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -302,11 +302,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1067178310095502}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91335332bd5fac943bb52a53d4902cf0, type: 3}
+  m_Script: {fileID: 11500000, guid: b0c92a4c0124ebd42afbc57a5c29f9ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startDrag: 0.4
   stopDrag: 1
+  scorePerHit: 1
 --- !u!198 &198031509257859748
 ParticleSystem:
   m_ObjectHideFlags: 1

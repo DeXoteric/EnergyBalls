@@ -89,7 +89,7 @@ GameObject:
   - component: {fileID: 4797968317348908}
   - component: {fileID: 58946213166778594}
   - component: {fileID: 50157146352681950}
-  - component: {fileID: 114547270670917980}
+  - component: {fileID: 114396244826352646}
   m_Layer: 0
   m_Name: White Ball
   m_TagString: Untagged
@@ -294,7 +294,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.4
---- !u!114 &114547270670917980
+--- !u!114 &114396244826352646
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -305,9 +305,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96037d23b798cde4c97c1cd91bb0cb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultiplier: 100
+  forceMultiplier: 50
   startDrag: 0.4
   stopDrag: 1
+  scorePerHit: 1
 --- !u!198 &198014265392255132
 ParticleSystem:
   m_ObjectHideFlags: 1
