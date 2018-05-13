@@ -17,7 +17,6 @@ public class YellowBallController : MonoBehaviour
 
     private void Update()
     {
-        print(energyBall.velocity.magnitude);
         if (energyBall.velocity.magnitude <= STOP_SPEED)
         {
             energyBall.drag = stopDrag;

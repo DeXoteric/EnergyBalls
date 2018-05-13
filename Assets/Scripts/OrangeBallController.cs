@@ -17,7 +17,6 @@ public class OrangeBallController : MonoBehaviour
 
     private void Update()
     {
-        print(energyBall.velocity.magnitude);
         if (energyBall.velocity.magnitude <= STOP_SPEED)
         {
             energyBall.drag = stopDrag;
@@ -28,5 +27,10 @@ public class OrangeBallController : MonoBehaviour
     {
         energyBall.drag = startDrag;
         ScoreTotal.AddScore(scorePerHit);
+
+        if (collision.gameObject.tag == "Ball")
+        {
+            energyBall.AddForce(energyBall.velocity * 0.08f, ForceMode2D.Impulse);
+        }
     }
 }
