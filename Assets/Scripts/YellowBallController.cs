@@ -26,6 +26,6 @@ public class YellowBallController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         energyBall.drag = startDrag;
-        ScoreTotal.AddScore(scorePerHit);
+        LevelController.AddScore(scorePerHit);
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Score : MonoBehaviour
 {
-    [SerializeField] private float timeUnit = 0.1f; // in SECONDS
+    private float timeUnit = 0.01f; // in SECONDS
     private Text scoreText;
     
 
@@ -13,7 +13,7 @@ public class Score : MonoBehaviour
         scoreText = GetComponent<Text>();
         StartCoroutine(UpdateDisplay());
     }
-
+   
     private IEnumerator UpdateDisplay()
     {
         WaitForSeconds delay = new WaitForSeconds(timeUnit);
@@ -28,9 +28,8 @@ public class Score : MonoBehaviour
     // Call this method if you have to update the scoreText manually
     public void UpdateScore()
     {
-        string score = ScoreTotal.GetScore().ToString();
-        string multiplier = ScoreTotal.GetMultiplier().ToString();
-
-        scoreText.text = "Score: " + score + " x" + multiplier;
+        
+        int scoreToDisplay = LevelController.GetScore() * LevelController.GetMultiplier();
+        scoreText.text = "Score: " + scoreToDisplay;
     }
 }

@@ -28,7 +28,7 @@ public class PurpleBallController : MonoBehaviour
         energyBall.drag = startDrag;
         if (collision.gameObject.tag == "Ball")
         {
-            ScoreTotal.AddMultiplier(multiplierPerHit);
+            LevelController.AddMultiplier(multiplierPerHit);
         }
     }
 }

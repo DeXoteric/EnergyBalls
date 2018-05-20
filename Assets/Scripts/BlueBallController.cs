@@ -8,6 +8,7 @@ public class BlueBallController : MonoBehaviour
 
     private const float STOP_SPEED = 0.1f;
 
+    
     private Rigidbody2D energyBall;
 
     private void Start()
@@ -26,6 +27,6 @@ public class BlueBallController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         energyBall.drag = startDrag;
-        ScoreTotal.AddScore(scorePerHit);
+        LevelController.AddScore(scorePerHit);
     }
 }

@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class WhiteBallController : MonoBehaviour
 {
-    [Range(10f, 100f)] [SerializeField] private float forceMultiplier = 100f;
+    [Range(10f, 5000f)] [SerializeField] private float forceMultiplier = 100f;
     [SerializeField] private float startDrag = 0.4f;
     [SerializeField] private float stopDrag = 1f;
     [SerializeField] private int scorePerHit = 1;
@@ -22,6 +23,7 @@ public class WhiteBallController : MonoBehaviour
         if (energyBall.velocity.magnitude <= STOP_SPEED)
         {
             energyBall.drag = stopDrag;
+            LevelController.isRoundActive = false;
         }
     }
 
@@ -33,26 +35,34 @@ public class WhiteBallController : MonoBehaviour
 
     private void OnMouseUp()
     {
-        if (!GameStage.CheckIfBallsAreMoving())
+        if (!LevelController.CheckIfBallsAreMoving())
         {
-            energyBall.drag = startDrag;
-            currentWhiteBallPosition = new Vector2(energyBall.position.x, energyBall.position.y);
-
-            float directionX = currentWhiteBallPosition.x - currentMousePosition.x;
-            float directionY = currentWhiteBallPosition.y - currentMousePosition.y;
-
-            Vector2 direction = new Vector2(directionX, directionY);
-
-            direction.Normalize();
-
-            energyBall.AddForce(direction * forceMultiplier, ForceMode2D.Impulse);
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                LaunchBall();
+                LevelController.NextMove();
+            }
         }
+    }
+
+    private void LaunchBall()
+    {
+        energyBall.drag = startDrag;
+        LevelController.isRoundActive = true;
+        currentWhiteBallPosition = new Vector2(energyBall.position.x, energyBall.position.y);
+
+        float directionX = currentWhiteBallPosition.x - currentMousePosition.x;
+        float directionY = currentWhiteBallPosition.y - currentMousePosition.y;
+
+        Vector2 direction = new Vector2(directionX, directionY);
+
+        direction.Normalize();
+
+        energyBall.AddForce(direction * Time.deltaTime * forceMultiplier, ForceMode2D.Impulse);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        ScoreTotal.AddScore(scorePerHit);
+        LevelController.AddScore(scorePerHit);
     }
-
-    
 }
