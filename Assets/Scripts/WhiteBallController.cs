@@ -1,30 +1,26 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class WhiteBallController : MonoBehaviour
+public class WhiteBallController : DefaultBallController
 {
-    [Range(10f, 5000f)] [SerializeField] private float forceMultiplier = 100f;
-    [SerializeField] private float startDrag = 0.4f;
-    [SerializeField] private float stopDrag = 1f;
+    [Range(4000f, 6000f)] [SerializeField] private float forceMultiplier = 5000f;
+
     [SerializeField] private int scorePerHit = 1;
 
-    private const float STOP_SPEED = 0.1f;
-
-    private Rigidbody2D energyBall;
     private Vector2 currentMousePosition, currentWhiteBallPosition;
 
-    private void Start()
-    {
-        energyBall = GetComponent<Rigidbody2D>();
-    }
-
-    private void Update()
+    protected override void Update()
     {
         if (energyBall.velocity.magnitude <= STOP_SPEED)
         {
             energyBall.drag = stopDrag;
+            
+        }
+        if (!LevelController.CheckIfBallsAreMoving())
+        {
             LevelController.isRoundActive = false;
         }
+
     }
 
     private void OnMouseDrag()

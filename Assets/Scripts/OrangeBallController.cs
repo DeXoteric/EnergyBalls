@@ -1,27 +1,9 @@
 ﻿using UnityEngine;
 
-public class OrangeBallController : MonoBehaviour
+public class OrangeBallController : DefaultBallController
 {
-    [SerializeField] private float startDrag = 0.4f;
-    [SerializeField] private float stopDrag = 1f;
     [SerializeField] private int scorePerHit = 1;
-
-    private const float STOP_SPEED = 0.1f;
-
-    private Rigidbody2D energyBall;
-
-    private void Start()
-    {
-        energyBall = GetComponent<Rigidbody2D>();
-    }
-
-    private void Update()
-    {
-        if (energyBall.velocity.magnitude <= STOP_SPEED)
-        {
-            energyBall.drag = stopDrag;
-        }
-    }
+    [SerializeField] private float forceMultiplier = 0.12f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,7 +12,7 @@ public class OrangeBallController : MonoBehaviour
 
         if (collision.gameObject.tag == "Ball")
         {
-            energyBall.AddForce(energyBall.velocity * 0.08f, ForceMode2D.Impulse);
+            energyBall.AddForce(energyBall.velocity * forceMultiplier, ForceMode2D.Impulse);
         }
     }
 }

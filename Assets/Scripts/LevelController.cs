@@ -51,20 +51,17 @@ public static class LevelController
 
     public static bool CheckIfBallsAreMoving()
     {
-        GameObject[] allEnergyBalls = GameObject.FindGameObjectsWithTag("Ball");
-        bool moving = false;
+        
+        GameObject[] allEnergyBalls = GameObject.FindGameObjectsWithTag("Ball"); 
+        bool isMoving = false;
         foreach (GameObject ball in allEnergyBalls)
         {
-            if (ball.GetComponent<Rigidbody2D>().velocity.magnitude == 0)
+            if (ball.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
             {
-                moving = false;
-            }
-            else
-            {
-                moving = true;
+                isMoving = true;
             }
         }
-        return moving;
+        return isMoving;
     }
 
     public static void ResetLevel()

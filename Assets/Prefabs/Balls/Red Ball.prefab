@@ -435,8 +435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e8b791d4e1d52f4f99752ed0b1f2fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startDrag: 0.4
-  stopDrag: 1
+  explosionPrefab: {fileID: 1629836443663080, guid: fd632ee75f96f0b4b9e583734911bf00,
+    type: 2}
   scorePerHit: 1
 --- !u!198 &198014265392255132
 ParticleSystem:

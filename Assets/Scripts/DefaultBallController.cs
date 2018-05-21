@@ -1,16 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class DefaultBallController : MonoBehaviour {
+public class DefaultBallController : MonoBehaviour
+{
+    protected float startDrag = 0.4f;
+    protected float stopDrag = 1f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    protected const float STOP_SPEED = 0.2f;
+
+    protected Rigidbody2D energyBall;
+
+    protected virtual void Start()
+    {
+        energyBall = GetComponent<Rigidbody2D>();
+    }
+
+    protected virtual void Update()
+    {
+        if (energyBall.velocity.magnitude <= STOP_SPEED)
+        {
+            energyBall.drag = stopDrag;
+        }
+    }
 }
