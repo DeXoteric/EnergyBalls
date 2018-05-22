@@ -67,7 +67,7 @@ public static class LevelController
     public static void ResetLevel()
     {
         scoreTotal = 0;
-        scoreMultiplier = 0;
+        scoreMultiplier = 1;
         round = 0;
         move = 0;
     }
