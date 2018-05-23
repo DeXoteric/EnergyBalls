@@ -27,6 +27,4 @@ public class DefaultBallController : MonoBehaviour
             energyBall.Sleep();
         }
     }
-
-    
 }

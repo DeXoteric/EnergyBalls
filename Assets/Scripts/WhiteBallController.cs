@@ -11,9 +11,14 @@ public class WhiteBallController : DefaultBallController
 
     protected override void FixedUpdate()
     {
-        if (energyBall.velocity.magnitude <= STOP_SPEED)
+        if (energyBall.velocity.magnitude <= DRAG_SPEED)
         {
             energyBall.drag = stopDrag;
+        }
+
+        if (energyBall.velocity.magnitude <= STOP_SPEED)
+        {
+            energyBall.Sleep();
         }
         if (!LevelController.CheckIfBallsAreMoving())
         {

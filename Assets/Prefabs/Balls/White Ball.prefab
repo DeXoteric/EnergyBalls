@@ -435,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96037d23b798cde4c97c1cd91bb0cb6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceMultiplier: 1000
+  forceMultiplier: 200
   scorePerHit: 1
 --- !u!198 &198014265392255132
 ParticleSystem:
