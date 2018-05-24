@@ -1,7 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class DefaultBallController : MonoBehaviour
 {
+
+    private int scoreOverTime = 1;
+
     protected float startDrag = 0.4f;
     protected float stopDrag = 1f;
 
@@ -26,5 +30,18 @@ public class DefaultBallController : MonoBehaviour
         {
             energyBall.Sleep();
         }
+
+        if (!LevelController.CheckIfBallsAreMoving())
+        {
+            LevelController.isRoundActive = false;
+            
+        } else
+        {
+            
+            LevelController.AddScore(scoreOverTime);
+            
+            
+        }
     }
+
 }

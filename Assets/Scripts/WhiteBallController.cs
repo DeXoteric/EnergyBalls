@@ -7,22 +7,16 @@ public class WhiteBallController : DefaultBallController
 
     [SerializeField] private int scorePerHit = 1;
 
+    [SerializeField] private ParticleSystem pulse;
+    [SerializeField] private GameObject aimingLine;
+
     private Vector2 currentMousePosition, currentWhiteBallPosition, direction;
 
-    protected override void FixedUpdate()
+    private void Update()
     {
-        if (energyBall.velocity.magnitude <= DRAG_SPEED)
+        if (!LevelController.isRoundActive)
         {
-            energyBall.drag = stopDrag;
-        }
-
-        if (energyBall.velocity.magnitude <= STOP_SPEED)
-        {
-            energyBall.Sleep();
-        }
-        if (!LevelController.CheckIfBallsAreMoving())
-        {
-            LevelController.isRoundActive = false;
+            pulse.Play();
         }
     }
 
@@ -36,8 +30,16 @@ public class WhiteBallController : DefaultBallController
         float directionY = currentWhiteBallPosition.y - currentMousePosition.y;
 
         direction = new Vector2(directionX, directionY);
-
+        
         direction.Normalize();
+
+        if (!LevelController.isRoundActive)
+        {
+            aimingLine.SetActive(true);
+            aimingLine.transform.rotation = Quaternion.LookRotation(-direction);
+
+            Cursor.visible = false;
+        }
     }
 
     private void OnMouseUp()
@@ -48,6 +50,9 @@ public class WhiteBallController : DefaultBallController
             {
                 LaunchBall();
 
+                aimingLine.SetActive(false);
+                Cursor.visible = true;
+                
                 LevelController.NextMove();
             }
         }
@@ -58,7 +63,9 @@ public class WhiteBallController : DefaultBallController
         energyBall.drag = startDrag;
         LevelController.isRoundActive = true;
 
-        energyBall.AddForce(direction * forceMultiplier, ForceMode2D.Impulse);
+        energyBall.AddForce(-direction * forceMultiplier, ForceMode2D.Impulse);
+
+        pulse.Stop();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

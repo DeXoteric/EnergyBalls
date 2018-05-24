@@ -6,7 +6,7 @@ public static class LevelController
     private static int scoreMultiplier = 1;
     private static int round = 0;
     private static int move = 0;
-    private static int scoreOverTime = 1;
+    
 
     public static bool isRoundActive = false;
 
@@ -59,7 +59,7 @@ public static class LevelController
             if (ball.GetComponent<Rigidbody2D>().velocity.magnitude > 0)
             {
                 isMoving = true;
-                AddScore(scoreOverTime);
+                
             }
         }
         return isMoving;

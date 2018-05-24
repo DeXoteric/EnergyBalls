@@ -3,7 +3,7 @@
 public class OrangeBallController : DefaultBallController
 {
     [SerializeField] private int scorePerHit = 1;
-    [SerializeField] private float forceMultiplier = 0.12f;
+    [SerializeField] private float forceMultiplier = 0.2f;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

@@ -1,12 +1,11 @@
 ﻿using UnityEngine;
 
-[ExecuteInEditMode]
+//[ExecuteInEditMode]
 public class ShapeRenderer : MonoBehaviour
 {
     [SerializeField] private LineRenderer lineRendererPrefab;
 
     private EdgeCollider2D[] colliders;
-    //private EdgeCollider2D edgeCollider;
     private LineRenderer lineRenderer;
 
     private void Start()
