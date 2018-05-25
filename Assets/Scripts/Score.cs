@@ -33,7 +33,7 @@ public class Score : MonoBehaviour
     public void UpdateScore()
     {
         
-        int scoreToDisplay = LevelController.GetScore() * LevelController.GetMultiplier();
+        int scoreToDisplay = LevelController.GetScore();
         scoreText.text = "Score: " + scoreToDisplay;
     }
 }

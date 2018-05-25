@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DefaultBallController : MonoBehaviour
 {
-
-    private int scoreOverTime = 1;
+    protected int scorePerHit = 1;
+    protected int scoreOverTime = 1;
 
     protected float startDrag = 0.4f;
     protected float stopDrag = 1f;
@@ -34,14 +33,16 @@ public class DefaultBallController : MonoBehaviour
         if (!LevelController.CheckIfBallsAreMoving())
         {
             LevelController.isRoundActive = false;
-            
-        } else
+        }
+        else
         {
-            
-            LevelController.AddScore(scoreOverTime);
-            
-            
+            int value = (int)(Mathf.CeilToInt(energyBall.velocity.magnitude));
+            LevelController.AddScore(value);
         }
     }
 
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    {
+        energyBall.drag = startDrag;
+    }
 }

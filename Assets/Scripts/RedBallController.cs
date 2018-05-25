@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class RedBallController : DefaultBallController
 {
     [SerializeField] private GameObject explosionPrefab;
-    [SerializeField] private int scorePerHit = 1;
+    
     [SerializeField] private Text hitsText;
     
 
@@ -17,10 +17,9 @@ public class RedBallController : DefaultBallController
         hitsText.text = hits.ToString();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        energyBall.drag = startDrag;
-        LevelController.AddScore(scorePerHit);
+        base.OnCollisionEnter2D(collision);
 
         // todo make it better
         hits--;

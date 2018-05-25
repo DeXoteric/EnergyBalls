@@ -2,13 +2,12 @@
 
 public class OrangeBallController : DefaultBallController
 {
-    [SerializeField] private int scorePerHit = 1;
+    
     [SerializeField] private float forceMultiplier = 0.2f;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        energyBall.drag = startDrag;
-        LevelController.AddScore(scorePerHit);
+        base.OnCollisionEnter2D(collision);
 
         if (collision.gameObject.tag == "Ball")
         {

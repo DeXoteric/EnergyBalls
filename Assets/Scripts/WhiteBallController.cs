@@ -1,16 +1,24 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class WhiteBallController : DefaultBallController
 {
     [SerializeField] private float forceMultiplier = 10f;
 
-    [SerializeField] private int scorePerHit = 1;
-
     [SerializeField] private ParticleSystem pulse;
     [SerializeField] private GameObject aimingLine;
+    [SerializeField] private Text hitsText;
 
+    private int hits;
     private Vector2 currentMousePosition, currentWhiteBallPosition, direction;
+
+    private void LateUpdate()
+    {
+        var ballPosition = new Vector3(transform.position.x, transform.position.y - 0.6f, transform.position.z);
+        hitsText.transform.position = Camera.main.WorldToScreenPoint(ballPosition);
+        hitsText.text = hits.ToString();
+    }
 
     private void Update()
     {
@@ -30,15 +38,20 @@ public class WhiteBallController : DefaultBallController
         float directionY = currentWhiteBallPosition.y - currentMousePosition.y;
 
         direction = new Vector2(directionX, directionY);
-        
+
         direction.Normalize();
+
+        
 
         if (!LevelController.isRoundActive)
         {
-            aimingLine.SetActive(true);
-            aimingLine.transform.rotation = Quaternion.LookRotation(-direction);
+            if (!EventSystem.current.IsPointerOverGameObject())
+            {
+                aimingLine.SetActive(true);
+                aimingLine.transform.rotation = Quaternion.LookRotation(-direction);
 
-            Cursor.visible = false;
+                Cursor.visible = false;
+            }
         }
     }
 
@@ -51,10 +64,11 @@ public class WhiteBallController : DefaultBallController
                 LaunchBall();
 
                 aimingLine.SetActive(false);
-                Cursor.visible = true;
                 
+
                 LevelController.NextMove();
             }
+            Cursor.visible = true;
         }
     }
 
@@ -68,8 +82,10 @@ public class WhiteBallController : DefaultBallController
         pulse.Stop();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected override void OnCollisionEnter2D(Collision2D collision)
     {
-        LevelController.AddScore(scorePerHit);
+        base.OnCollisionEnter2D(collision);
+
+        hits++;
     }
 }
